@@ -1,8 +1,11 @@
 package co.com.sersoluciones.activityapplication
 
+import android.content.Context
+import android.content.Intent
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.util.Patterns
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
@@ -16,8 +19,12 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setSupportActionBar(toolbar)
-
-        fab.setOnClickListener { calcularBMI() }
+        val mContext:Context
+        mContext = this
+        fab.setOnClickListener {
+            startActivity(Intent(mContext, FragmentoActivity::class.java))
+            //calcularBMI()
+            }
 
     }
 
@@ -30,6 +37,7 @@ class MainActivity : AppCompatActivity() {
 
             Toast.makeText(this, "es un numero!!", Toast.LENGTH_SHORT).show()
         }
+        val emailPattern = Patterns.EMAIL_ADDRESS;
     }
 
     override fun onStart() {
